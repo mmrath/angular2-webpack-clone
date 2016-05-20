@@ -1,4 +1,4 @@
 import {auth} from './auth';
-import {userRegisteration} from './user-registration';
+import {signup} from './signup';
 
-export const REDUCERS = { auth, userRegisteration};
+export const REDUCERS = { auth, signup};

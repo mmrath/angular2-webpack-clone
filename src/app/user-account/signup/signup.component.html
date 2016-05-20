@@ -1,7 +1,8 @@
 <div class="signup center-block jumbotron">
+  <h2 *ngIf="(signupInfo | async)?.success">Signup successful</h2>
   <h1>Register</h1>
 
-  <form role="form" [ngFormModel]="registrationForm" (ngSubmit)="register()">
+  <form role="form" [ngFormModel]="registrationForm" (ngSubmit)="signup()">
 
     <div class="form-group" [ngClass]="{ 'has-error' : !login.valid && login.touched }">
       <label class="control-label" for="login">Username</label>

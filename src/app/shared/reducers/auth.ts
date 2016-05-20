@@ -16,7 +16,7 @@ export const LOGOUT_RECEIVED = 'LOGOUT_RECEIVED';
 
 export const INIT = 'INIT';
 
-var initialState: Auth = {
+let initialState: Auth = {
   error: null,
   token: null,
   userInfo: null

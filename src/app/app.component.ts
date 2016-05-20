@@ -8,8 +8,8 @@ import { ApiService } from './shared';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import {LoggedInRouterOutlet} from './shared/directives/logged-in-router-outlet';
-import {LoginComponent, RegisterComponent} from './shared/components/index';
-
+import {LoginComponent} from './shared/components/index';
+import {SignupComponent} from './user-account/signup/index';
 /*
  * App Component
  * Top Level Component
@@ -26,7 +26,7 @@ import {LoginComponent, RegisterComponent} from './shared/components/index';
   { path: '/home', component: HomeComponent, as: 'Home' },
   { path: '/about', component: AboutComponent, as: 'About' },
   { path: '/login', component: LoginComponent, as: 'Login' },
-  { path: '/register', component: SignupComponent, as: 'Register' }
+  { path: '/signup', component: SignupComponent, as: 'Signup' }
 ])
 export class AppComponent {
   url = 'https://github.com/preboot/angular2-webpack';
