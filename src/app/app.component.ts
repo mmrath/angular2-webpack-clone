@@ -8,7 +8,7 @@ import { ApiService } from './shared';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import {LoggedInRouterOutlet} from './shared/directives/logged-in-router-outlet';
-import {LoginComponent, SignupComponent} from './shared/components/index';
+import {LoginComponent, RegisterComponent} from './shared/components/index';
 
 /*
  * App Component
@@ -26,7 +26,7 @@ import {LoginComponent, SignupComponent} from './shared/components/index';
   { path: '/home', component: HomeComponent, as: 'Home' },
   { path: '/about', component: AboutComponent, as: 'About' },
   { path: '/login', component: LoginComponent, as: 'Login' },
-  { path: '/signup', component: SignupComponent, as: 'Signup' }
+  { path: '/register', component: SignupComponent, as: 'Register' }
 ])
 export class AppComponent {
   url = 'https://github.com/preboot/angular2-webpack';

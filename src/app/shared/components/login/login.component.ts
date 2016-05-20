@@ -4,7 +4,7 @@ import { CORE_DIRECTIVES, FORM_DIRECTIVES } from '@angular/common';
 import { Http, Headers } from '@angular/http';
 
 @Component({
-  selector: 'app-login',
+  selector: 'my-app-login',
   directives: [RouterLink, CORE_DIRECTIVES, FORM_DIRECTIVES ],
   template: require('./login.component.html'),
 })

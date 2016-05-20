@@ -57,7 +57,7 @@ module.exports = function makeWebpackConfig() {
    */
   config.output = isTest ? {} : {
     path: root('dist'),
-    publicPath: isProd ? '/' : 'http://localhost:8080/',
+    publicPath: isProd ? '/' : 'http://localhost:4200/',
     filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
     chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
   };
@@ -251,7 +251,13 @@ module.exports = function makeWebpackConfig() {
   config.devServer = {
     contentBase: './src/public',
     historyApiFallback: true,
-    stats: 'minimal' // none (or false), errors-only, minimal, normal (or true) and verbose
+    stats: 'minimal', // none (or false), errors-only, minimal, normal (or true) and verbose
+    proxy: {
+      '/api/*': {
+        target: 'http://127.0.0.1:8080/',
+        secure: false
+      }
+    }
   };
 
   return config;

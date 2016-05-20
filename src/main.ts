@@ -8,7 +8,8 @@ import { AuthConfig, AuthHttp } from 'angular2-jwt';
 
 import {AppComponent} from './app/app.component';
 
-
+import {provideStore} from '@ngrx/store';
+import {REDUCERS} from './app/shared/reducers/index';
 
 const ENV_PROVIDERS = [];
 // depending on the env mode, enable prod mode or add debugging modules
@@ -23,6 +24,7 @@ bootstrap(AppComponent, [
     ...HTTP_PROVIDERS,
     ...ROUTER_PROVIDERS,
     ...ENV_PROVIDERS,
+    provideStore(REDUCERS),
     provide(AuthHttp, {
       useFactory: (http) => {
         return new AuthHttp(new AuthConfig({

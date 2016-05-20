@@ -1,2 +1,2 @@
 export {LoginComponent} from './login/login.component';
-export {SignupComponent} from './signup/signup.component';
+export {RegisterComponent} from './account/register.component';
