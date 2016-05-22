@@ -8,8 +8,7 @@ import { ApiService } from './shared';
 import { HomeComponent } from './home';
 import { AboutComponent } from './about';
 import {LoggedInRouterOutlet} from './shared/directives/logged-in-router-outlet';
-import {LoginComponent} from './shared/components/index';
-import {SignupComponent} from './user-account/signup/index';
+import {LoginComponent, SignupComponent} from './user-account/index';
 /*
  * App Component
  * Top Level Component

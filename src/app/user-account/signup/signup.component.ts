@@ -45,9 +45,8 @@ export class SignupComponent {
   }
 
   public signup() {
-    if (!this.signupForm.valid) {
-      return;
+    if (this.signupForm.valid) {
+      this.signupService.signup(this.signupForm.value);;
     }
-    this.signupService.signup(this.signupForm.value);
   }
 }

@@ -1,15 +1,12 @@
-import { Action, Reducer, Store } from '@ngrx/store';
+import { Action, Reducer } from '@ngrx/store';
 
 import { Auth } from '../models';
 
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGIN_IN_PROGRESS = 'LOGIN_IN_PROGRESS';
-export const SIGNUP_USER = 'SIGNUP_USER';
-export const SIGNUP_IN_PROGRESS = 'SIGNUP_IN_PROGRESS';
-export const USER_AUTHENTICATED = 'USER_AUTHENTICATED';
+export const LOGIN_SUCCCESS = 'LOGIN_SUCCCESS';
 export const AUTH_TOKEN_EXPIRED = 'AUTH_TOKEN_EXPIRED';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
-export const SIGNUP_FAILURE = 'SIGNUP_FAILURE';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const LOGOUT_IN_PROGRESS = 'LOGOUT_IN_PROGRESS';
 export const LOGOUT_RECEIVED = 'LOGOUT_RECEIVED';
@@ -25,7 +22,7 @@ let initialState: Auth = {
 export const auth: Reducer<any> = (state = initialState, action: Action = {type: INIT}) => {
 
   switch (action.type) {
-    case USER_AUTHENTICATED:
+    case LOGIN_SUCCCESS:
       return Object.assign({}, state,
         {token: action.payload.token, current: action.payload.user, error: null});
 
@@ -33,7 +30,6 @@ export const auth: Reducer<any> = (state = initialState, action: Action = {type:
       return Object.assign({}, initialState);
 
     case LOGIN_FAILURE:
-    case SIGNUP_FAILURE:
     case AUTH_TOKEN_EXPIRED:
       return Object.assign({}, state, {error: action.payload.error, token: null, current: null});
 
