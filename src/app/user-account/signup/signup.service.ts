@@ -21,7 +21,13 @@ export class SignupService {
     this.http.post(SIGNUP_API, JSON.stringify(item), JSON_HEADERS)
       .subscribe(
         action => this.store.dispatch({ type: SIGNUP_SUCCESS}),
-        err => this.store.dispatch({type: SIGNUP_FAILURE, payload:{ error: err._body}})
+        err => {
+          let errorBody = undefined;
+          if ( typeof err._body !== 'undefined' ) {
+            errorBody = JSON.parse(err._body);
+          }
+          this.store.dispatch({type: SIGNUP_FAILURE, payload:{ error: errorBody}});
+        }
         );
   }
 }

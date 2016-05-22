@@ -1,32 +1,57 @@
-<div class="signup center-block jumbotron">
-  <h2 *ngIf="(signupInfo | async)?.success">Signup successful</h2>
-  <h1>Register</h1>
+<div *ngIf="(signupInfo | async)?.success">
+    <legend>Signup successful!</legend>
+    <p>Please check your inbox for activation email. You will need to activate your account before login.</p>
+</div>
 
-  <form role="form" [ngFormModel]="registrationForm" (ngSubmit)="signup()">
+<div *ngIf="!((signupInfo | async)?.success)">
 
-    <div class="form-group" [ngClass]="{ 'has-error' : !login.valid && login.touched }">
-      <label class="control-label" for="login">Username</label>
-      <em *ngIf="login.hasError('required') && login.touched">Required</em>
-      <em *ngIf="login.hasError('minlength') && login.touched">Must be at least 6 characters</em>
-      <input id="login" type="text" class="form-control" placeholder="Username" ngControl="login">
+  <form role="form" [ngFormModel]="signupForm" (ngSubmit)="signup()">
+    <h3 >Signup for a new account</h3>
+    <div class="p-b-2">
+    <small>Already have an account? <a [routerLink]="['/Login']">Login</a></small>
+    </div>
+    <div class="row form-group" [ngClass]="{ 'has-error' : !firstName.valid && firstName.touched }">
+      <label class="form-control-label col-sm-4 col-md-3 col-lg-2" for="firstName">First Name</label>
+      <div class="col-sm-8 col-md-4 col-lg-3">
+        <input id="firstName" type="text" class="form-control" placeholder="First Name" ngControl="firstName">
+        <small class="text-help text-danger" *ngIf="firstName.hasError('required') && firstName.touched">Required</small>
+        <small class="text-help text-danger" *ngIf="firstName.hasError('minlength') && firstName.touched">Must be at least 6 characters</small>
+      </div>
     </div>
 
-    <div class="form-group" [ngClass]="{ 'has-error' : !email.valid && email.touched }">
-      <label class="control-label" for="email">Email</label>
-      <em *ngIf="email.hasError('required') && email.touched">Required</em>
-      <em *ngIf="email.hasError('pattern') && email.touched">Must be a valid email address</em>
-      <input id="email" type="email" class="form-control" placeholder="Email" ngControl="email">
+    <div class="row form-group" [ngClass]="{ 'has-error' : !lastName.valid && lastName.touched }">
+      <label class="form-control-label col-sm-4 col-md-3 col-lg-2" for="lastName">Last Name</label>
+      <div class="col-sm-8 col-md-4 col-lg-3">
+        <input id="lastName" type="text" class="form-control" placeholder="Last Name" ngControl="lastName">
+        <small class="text-help text-danger" *ngIf="lastName.hasError('required') && lastName.touched">Required</small>
+        <small class="text-help text-danger" *ngIf="lastName.hasError('minlength') && lastName.touched">Must be at least 6 characters</small>
+      </div>
     </div>
 
-    <div class="form-group" [ngClass]="{ 'has-error' : !password.valid && password.touched }">
-      <label class="control-label" for="password">Password</label>
-      <em *ngIf="password.hasError('required') && password.touched">Required</em>
-      <em *ngIf="password.hasError('minlength') && password.touched">Must be at least 8 characters</em>
-      <input id="password" type="password" class="form-control" placeholder="Password" ngControl="password">
+    <div class="row form-group" [ngClass]="{ 'has-error' : !email.valid && email.touched }">
+      <label class="form-control-label col-sm-4 col-md-3 col-lg-2" for="email">Email</label>
+      <div class="col-sm-8 col-md-4 col-lg-3">
+        <input id="email" type="email" class="form-control" placeholder="Email" ngControl="email">
+        <small class="text-help text-danger" *ngIf="email.hasError('required') && email.touched">Required</small>
+        <small class="text-help text-danger" *ngIf="email.hasError('pattern') && email.touched">Must be a valid email address</small>
+        <small class="text-help text-danger" *ngIf="(signupInfo | async)?.error">{{ (signupInfo | async)?.error | fieldError:'email' }}</small>
+      </div>
     </div>
 
-    <div class="form-group">
-      <button type="submit" class="btn btn-primary" [ngClass]="{'disabled' : !registrationForm.valid }">Register</button>
+    <div class="row form-group" [ngClass]="{ 'has-error' : !password.valid && password.touched }">
+      <label class="form-control-label col-sm-4 col-md-3 col-lg-2" for="password">Password</label>
+      <div class="col-sm-8 col-md-4 col-lg-3">
+        <input id="password" type="password" class="form-control" placeholder="Password" ngControl="password">
+        <small class="text-help text-danger" *ngIf="password.hasError('required') && password.touched">Required</small>
+        <small class="text-help text-danger" *ngIf="password.hasError('minlength') && password.touched">Must be at least 8 characters</small>
+        <small class="text-help text-danger" *ngIf="(signupInfo | async)?.error">{{ (signupInfo | async)?.error | fieldError:'password' }}</small>
+      </div>
+    </div>
+
+    <div class="row form-group">
+      <div class="col-sm-8 col-md-4 col-lg-3 offset-sm-4 offset-md-4 offset-lg-2 ">
+        <button type="submit" class="btn btn-primary" [ngClass]="{'disabled' : !signupForm.valid }">Signup</button>
+      </div>
     </div>
 
   </form>
