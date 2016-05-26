@@ -1,5 +1,5 @@
 export interface Auth {
   token: string;
   error?: string;
-  userInfo?: any;
+  user?: any;
 }

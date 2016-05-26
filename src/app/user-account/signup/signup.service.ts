@@ -3,7 +3,7 @@ import {Http} from '@angular/http';
 import {Store} from '@ngrx/store';
 
 import {SIGNUP_API} from '../../shared/constants/api';
-import {SIGNUP_IN_PROGRESS, SIGNUP_SUCCESS, SIGNUP_FAILURE, SIGNUP_START} from '../../shared/reducers/signup';
+import {SIGNUP_START, SIGNUP_IN_PROGRESS, SIGNUP_SUCCESS, SIGNUP_FAILURE} from '../../shared/reducers/signup';
 import {JSON_HEADERS} from '../../shared/constants/headers';
 
 
@@ -26,5 +26,9 @@ export class SignupService {
           this.store.dispatch({type: SIGNUP_FAILURE, payload:{ error: errorBody}});
         }
         );
+  }
+
+  public signupStart() {
+    this.store.dispatch({type: SIGNUP_START});
   }
 }

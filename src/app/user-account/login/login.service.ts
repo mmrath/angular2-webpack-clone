@@ -16,7 +16,7 @@ export class LoginService {
     this.store.dispatch({type: LOGIN_IN_PROGRESS});
     this.http.post(LOGIN_API, JSON.stringify(loginInfo), JSON_HEADERS)
       .subscribe(
-        action => this.store.dispatch({ type: LOGIN_SUCCCESS}),
+        response => this.store.dispatch({ type: LOGIN_SUCCCESS, payload: response.json() }),
         err => {
           let errorBody = undefined;
           if ( typeof err._body !== 'undefined' ) {
