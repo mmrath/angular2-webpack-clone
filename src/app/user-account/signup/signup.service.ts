@@ -11,6 +11,7 @@ import {JSON_HEADERS} from '../../shared/constants/headers';
 export class SignupService {
 
   constructor(private http: Http, private store: Store<any>) {
+    this.store.dispatch({type: SIGNUP_START});
   }
 
   public signup(item: any): void {

@@ -1,5 +1,5 @@
 import {Http, Request, RequestOptionsArgs, Response, RequestOptions, ConnectionBackend, Headers} from '@angular/http';
-import {Router} from '@angular/router';
+import {Router} from '@angular/router-deprecated';
 import { Observable } from 'rxjs/Observable';
 
 export class HttpInterceptor extends Http {

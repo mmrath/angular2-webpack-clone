@@ -25,7 +25,7 @@ export class LoginComponent {
 
   constructor(private store: Store<any>, private router: Router, private loginService: LoginService, private builder: FormBuilder) {
     this.username = new Control('', Validators.compose([Validators.required]));
-    this.password = new Control('', Validators.compose([Validators.required, Validators.minLength(8)]));
+    this.password = new Control('', Validators.compose([Validators.required, Validators.minLength(5)]));
     this.loginForm = builder.group({
       username: this.username,
       password: this.password

@@ -17,7 +17,8 @@ export class LoggedInRouterOutlet extends RouterOutlet {
     // denotes whether the route requires authentication to view
     this.publicRoutes = {
       'login': true,
-      'signup': true
+      'signup': true,
+      'activate': true
     };
   }
 
